@@ -14,8 +14,7 @@ const RELEASES_URL_MAP := {
 	GITHUB_REGEX : GITHUB_RELEASES_URL
 }
 const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of %s.\nFiles outside of there will not be affected.\n\nUpdate %s to %s?"
-const PLUGIN_EXTRACT_PATH := "res://addons/%s/"
-const PLUGIN_TEMP_ZIP_PATH := "res://%s_%s_update.zip"
+const PLUGIN_TEMP_ZIP_PATH := "%s_%s_update.zip"
 
 ## The directory of the plugin to update. Typically in res://addons/.
 @export var plugin_directory : String
@@ -104,7 +103,7 @@ func _on_api_client_response_received(response_body : Variant) -> void:
 	_update_confirmation_dialog.show()
 
 func _on_download_and_extract_zip_saved() -> void:
-	OS.move_to_trash(ProjectSettings.globalize_path(PLUGIN_EXTRACT_PATH % plugin_directory))
+	OS.move_to_trash(ProjectSettings.globalize_path(plugin_directory))
 
 func _on_download_and_extract_run_failed(error : String) -> void:
 	_show_error_dialog(error)
