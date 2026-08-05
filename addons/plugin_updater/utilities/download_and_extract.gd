@@ -246,7 +246,7 @@ func _extract_next_zipped_file() -> void:
 		skipped_file_paths.append(zipped_file_path)
 		return
 	var extract_path_dir := extract_path
-	if not extract_path_dir.ends_with("/"):
+	if (not extract_path_dir.is_empty()) and (not extract_path_dir.ends_with("/")):
 		extract_path_dir += "/"
 	var full_path := extract_path_dir 
 	if skip_base_zip_dir:
