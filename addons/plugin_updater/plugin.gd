@@ -2,16 +2,17 @@
 class_name PluginUpdater
 extends EditorPlugin
 
-const PROJECT_SETTINGS_PATH = "plugin_updater/plugins"
-const APIClient = preload("utilities/api_client.gd")
-const DownloadAndExtract = preload("utilities/download_and_extract.gd")
-const CheckPluginVersion = preload("updater/check_plugin_version.gd")
-const UpdatePlugin = preload("updater/update_plugin.gd")
+const PROJECT_SETTINGS_PATH := "plugin_updater/plugins"
+const PROJECT_REPO_URL := "https://github.com/Maaack/Godot-Plugin-Updater"
+const APIClient := preload("utilities/api_client.gd")
+const DownloadAndExtract := preload("utilities/download_and_extract.gd")
+const CheckPluginVersion := preload("updater/check_plugin_version.gd")
+const UpdatePlugin := preload("updater/update_plugin.gd")
 
-var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
-var _update_plugin_scene = preload("updater/update_plugin.tscn")
-var added_menu_item : bool = false
-var popup_menu : PopupMenu
+var _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
+var _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
+var added_menu_item:bool = false
+var popup_menu:PopupMenu
 
 static func get_plugin_repos() -> Dictionary:
 	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH, {})
@@ -85,7 +86,7 @@ func _remove_tool_options() -> void:
 	_remove_update_plugin_tool_option()
 
 func _enter_tree() -> void:
-	add_plugin(get_plugin_path(), "https://github.com/Maaack/Godot-Plugin-Updater")
+	add_plugin(get_plugin_path(), PROJECT_REPO_URL)
 	_add_tool_options()
 
 func _exit_tree() -> void:
