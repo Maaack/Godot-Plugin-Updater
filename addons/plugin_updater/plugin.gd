@@ -10,9 +10,8 @@ const DownloadAndExtract = preload("utilities/download_and_extract.gd")
 const CheckPluginVersion = preload("updater/check_plugin_version.gd")
 const UpdatePlugin = preload("updater/update_plugin.gd")
 
-static var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
-static var _update_plugin_scene = preload("updater/update_plugin.tscn")
-
+var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
+var _update_plugin_scene = preload("updater/update_plugin.tscn")
 var added_menu_item : bool = false
 var popup_menu : PopupMenu
 
