@@ -3,8 +3,6 @@ class_name PluginUpdater
 extends EditorPlugin
 
 const PROJECT_SETTINGS_PATH = "plugin_updater/plugins"
-const WINDOW_OPEN_DELAY : float = 0.5
-
 const APIClient = preload("utilities/api_client.gd")
 const DownloadAndExtract = preload("utilities/download_and_extract.gd")
 const CheckPluginVersion = preload("updater/check_plugin_version.gd")
@@ -30,20 +28,6 @@ static func remove_plugin(plugin_directory:String):
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir()
-
-func _on_visibility_changed_to_hidden(dialog_window : Window) -> void:
-	if dialog_window and dialog_window.is_inside_tree() and not dialog_window.visible:
-		dialog_window.queue_free()
-
-func _delayed_call_with_path(callable : Callable, target_path : String) -> void:
-	var timer: Timer = Timer.new()
-	var timer_callable := func():
-		timer.stop()
-		callable.call(target_path)
-		timer.queue_free()
-	timer.timeout.connect(timer_callable)
-	add_child(timer)
-	timer.start(WINDOW_OPEN_DELAY)
 
 func _on_new_version_detected(new_plugin_version:String, check_version_instance:CheckPluginVersion) -> void:
 	_add_update_plugin_tool_option(check_version_instance.get_plugin_name(), new_plugin_version, check_version_instance.plugin_directory, check_version_instance.plugin_repo_url)
