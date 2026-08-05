@@ -89,7 +89,12 @@ func _on_api_client_response_received(response_body) -> void:
 		return
 	var current_tag_name = get_plugin_version()
 	if tag_name != current_tag_name:
-		new_version_detected.emit(tag_name)
+		var regex := RegEx.create_from_string("^[^0-9]*(.+)$")
+		var regex_match := regex.search(tag_name)
+		if regex_match.get_group_count() > 0 and regex_match.get_string(1) != current_tag_name:
+			new_version_detected.emit(tag_name)
+		else:
+			versions_matched.emit()
 	else:
 		versions_matched.emit()
 	done.emit()
