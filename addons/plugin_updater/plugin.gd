@@ -85,8 +85,9 @@ func _add_update_plugin_tool_option(plugin_name:String, new_version:String, plug
 	_popup_menu.add_item("%s to %s" % [plugin_name, new_version])
 	if not _popup_menu.id_pressed.is_connected(_on_id_pressed):
 		_popup_menu.id_pressed.connect(_on_id_pressed.bind(plugin_directory, plugin_repo_url))
-	add_tool_submenu_item("Update Plugins...", _popup_menu)
-	added_menu_item = true
+	if not added_menu_item:
+		add_tool_submenu_item("Update Plugins...", _popup_menu)
+		added_menu_item = true
 
 func _remove_update_plugin_tool_option() -> void:
 	if not added_menu_item:
