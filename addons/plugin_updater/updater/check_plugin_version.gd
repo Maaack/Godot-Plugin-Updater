@@ -88,15 +88,15 @@ func _on_api_client_response_received(response_body) -> void:
 	if not load_plugin_data():
 		return
 	var current_tag_name = get_plugin_version()
-	if tag_name != current_tag_name:
+	if tag_name == current_tag_name:
+		versions_matched.emit()
+	else:
 		var regex := RegEx.create_from_string("^[^0-9]*(.+)$")
 		var regex_match := regex.search(tag_name)
-		if regex_match.get_group_count() > 0 and regex_match.get_string(1) != current_tag_name:
-			new_version_detected.emit(tag_name)
-		else:
+		if regex_match.get_group_count() > 0 and regex_match.get_string(1) == current_tag_name:
 			versions_matched.emit()
-	else:
-		versions_matched.emit()
+		else:
+			new_version_detected.emit(tag_name)
 	done.emit()
 
 func compare_versions(_plugin_directory = plugin_directory, _plugin_repo_url = plugin_repo_url) -> void:
