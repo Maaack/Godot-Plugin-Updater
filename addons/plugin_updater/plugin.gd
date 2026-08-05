@@ -10,11 +10,23 @@ const DownloadAndExtract = preload("utilities/download_and_extract.gd")
 const CheckPluginVersion = preload("updater/check_plugin_version.gd")
 const UpdatePlugin = preload("updater/update_plugin.gd")
 
-static var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
-static var _update_plugin_scene = preload("updater/update_plugin.tscn")
-
+var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
+var _update_plugin_scene = preload("updater/update_plugin.tscn")
 var added_menu_item : bool = false
 var popup_menu : PopupMenu
+
+static func get_plugin_repos() -> Dictionary:
+	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH, {})
+
+static func add_plugin(plugin_directory:String, plugin_repo_url:String):
+	var plugin_repos := get_plugin_repos()
+	plugin_repos[plugin_directory] = plugin_repo_url
+	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
+
+static func remove_plugin(plugin_directory:String):
+	var plugin_repos := get_plugin_repos()
+	plugin_repos.erase(plugin_directory)
+	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir()
@@ -32,19 +44,6 @@ func _delayed_call_with_path(callable : Callable, target_path : String) -> void:
 	timer.timeout.connect(timer_callable)
 	add_child(timer)
 	timer.start(WINDOW_OPEN_DELAY)
-
-func get_plugin_repos() -> Dictionary:
-	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH, {})
-
-func add_plugin(plugin_directory:String, plugin_repo_url:String):
-	var plugin_repos := get_plugin_repos()
-	plugin_repos[plugin_directory] = plugin_repo_url
-	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
-
-func remove_plugin(plugin_directory:String):
-	var plugin_repos := get_plugin_repos()
-	plugin_repos.erase(plugin_directory)
-	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
 
 func _on_new_version_detected(new_plugin_version:String, check_version_instance:CheckPluginVersion) -> void:
 	_add_update_plugin_tool_option(check_version_instance.get_plugin_name(), new_plugin_version, check_version_instance.plugin_directory, check_version_instance.plugin_repo_url)
@@ -86,8 +85,9 @@ func _add_update_plugin_tool_option(plugin_name:String, new_version:String, plug
 	_popup_menu.add_item("%s to %s" % [plugin_name, new_version])
 	if not _popup_menu.id_pressed.is_connected(_on_id_pressed):
 		_popup_menu.id_pressed.connect(_on_id_pressed.bind(plugin_directory, plugin_repo_url))
-	add_tool_submenu_item("Update Plugins...", _popup_menu)
-	added_menu_item = true
+	if not added_menu_item:
+		add_tool_submenu_item("Update Plugins...", _popup_menu)
+		added_menu_item = true
 
 func _remove_update_plugin_tool_option() -> void:
 	if not added_menu_item:
