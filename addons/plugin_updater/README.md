@@ -7,6 +7,8 @@ Supports plugins for Godot 4.4 through 4.7.1!
 
 Provide a generic solution for plugins hosted on open-source repositories to provide automatic updates through the editor.
 
+Any updates available will appear under the `Project > Tools > Update Plugins...` menu item.
+
 Currently, only GitHub is supported, but other platforms are planned.
 
 
@@ -69,4 +71,4 @@ func _exit_tree() -> void:
 
 ```
 
-In either case, if the Plugin Updater is enabled in the user's project, then their editor will automatically check the 
+In either case, if the Plugin Updater is enabled in the user's project, then the editor will automatically check the plugins in the project setting "plugin_updater/plugins", compare against the latest releases, and offer the option to update plugins in the `Project > Tools > Update Plugins...` menu item.
