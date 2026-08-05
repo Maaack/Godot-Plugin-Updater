@@ -41,7 +41,8 @@ When editing a plugin:
 
 Open the script of the plugin that you want to have automatic updates. This can be found in the plugin's configuration file (ex. `plugin.cfg`) under the `script` property (ex. `script="plugin.gd"`).
 
-Add the following code:
+### Including Plugin Updater
+If you are going to include the Plugin Updater with your plugin, then just add the following code:
 ```gdscript
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir()
@@ -53,7 +54,8 @@ func _exit_tree() -> void:
 	PluginUpdater.remove_plugin(get_plugin_path())
 ```
 
-If you'd rather avoid including the Plugin Updater or making it a dependency, you can add the following code:
+### Supporting Plugin Updater
+If you'd rather avoid including the Plugin Updater or making it a dependency, but would still like to optionally support it, you can add the following code:
 
 ```gdscript
 func get_plugin_path() -> String:
@@ -71,4 +73,5 @@ func _exit_tree() -> void:
 
 ```
 
-In either case, if the Plugin Updater is enabled in the user's project, then the editor will automatically check the plugins in the project setting "plugin_updater/plugins", compare against the latest releases, and offer the option to update plugins in the `Project > Tools > Update Plugins...` menu item.
+### Automatic Updates
+If the Plugin Updater is enabled in the user's project, then when the editor starts, it will check the plugins in the project setting "plugin_updater/plugins", compare against the latest releases, and offer the option to update plugins in the `Project > Tools > Update Plugins...` menu item.
