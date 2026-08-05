@@ -78,7 +78,7 @@ func _show_error_dialog(error : String) -> void:
 
 func _show_success_dialog() -> void:
 	_success_dialog.show()
-	_success_dialog.dialog_text = "%s updated to v%s." % [_plugin_name, _newest_version]
+	_success_dialog.dialog_text = "%s updated to %s." % [_plugin_name, _newest_version]
 
 func _on_api_client_request_failed(error : String) -> void:
 	_show_error_dialog(error)
