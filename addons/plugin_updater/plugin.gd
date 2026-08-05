@@ -8,10 +8,10 @@ const APIClient := preload("utilities/api_client.gd")
 const DownloadAndExtract := preload("utilities/download_and_extract.gd")
 const CheckPluginVersion := preload("updater/check_plugin_version.gd")
 const UpdatePlugin := preload("updater/update_plugin.gd")
-const _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
-const _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
 
 static var instance:PluginUpdater
+var _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
+var _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
 var added_menu_item:bool = false
 var popup_menu:PopupMenu
 
