@@ -45,7 +45,7 @@ func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir()
 
 func _enter_tree() -> void:
-    PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/{USERNAME}/{REPO_NAME}}")
+    PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/{USERNAME}/{REPO_NAME}")
 
 func _exit_tree() -> void:
 	PluginUpdater.remove_plugin(get_plugin_path())
@@ -59,7 +59,7 @@ func get_plugin_path() -> String:
 
 func _enter_tree() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
-	plugin_repos[get_plugin_path()] = "https://github.com/{USERNAME}/{REPO_NAME}}"
+	plugin_repos[get_plugin_path()] = "https://github.com/{USERNAME}/{REPO_NAME}"
 	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
 
 func _exit_tree() -> void:
