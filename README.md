@@ -11,6 +11,8 @@ Provide a generic solution for plugins hosted on open-source repositories to pro
 
 Any updates available will appear under the **Project > Tools > Update Plugins...** menu item.
 
+![Updates menu location](/addons/plugin_updater/media/updates-location.png)
+
 ## Installation
 
 ### GitHub
