@@ -22,7 +22,7 @@ Any updates available will appear under the **Project > Tools > Update Plugins..
 2.  Extract the contents of the archive.
 3.  Move the `addons/plugin_updater` folder into your project's `addons/` folder.  
 4.  Open/Reload the project.  
-5.  Enable the plugin from the Project Settings > Plugins tab.  
+5.  Enable the plugin from the **Project > Project Settings > Plugins** tab.  
 
 
 ## Usage
