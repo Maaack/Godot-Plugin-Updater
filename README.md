@@ -1,16 +1,15 @@
+![Logo](/addons/plugin_updater/media/icon_256x256.png)
 # Godot Plugin Updater
-Generic update wizard for plugins hosted on open source repositories. The plugin checks current plugin versions against lastest releases in the respective repos, and offers to update any that are out-of-date.
 
-Supports plugins for Godot 4.4 through 4.7.1!
+A plugin for updating plugins. Works Godot plugins with public repositories and using tagged releases.
+
+Currently, only GitHub is supported, but other hosts are planned. Supports plugins for Godot 4.4 through 4.7.1!
 
 ## Objective
 
 Provide a generic solution for plugins hosted on open-source repositories to provide automatic updates through the editor.
 
 Any updates available will appear under the **Project > Tools > Update Plugins...** menu item.
-
-Currently, only GitHub is supported, but other platforms are planned.
-
 
 ## Installation
 
