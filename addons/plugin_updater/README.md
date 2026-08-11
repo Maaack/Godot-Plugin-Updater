@@ -1,7 +1,7 @@
 ![Logo](/addons/plugin_updater/media/icon_256x256.png)
 # Godot Plugin Updater
 
-A plugin for updating plugins. Works Godot plugins with public repositories and using tagged releases.
+A plugin for updating plugins. Works with Godot plugins hosted on public repositories and using tagged releases.
 
 Currently, only GitHub is supported, but other hosts are planned. Supports plugins for Godot 4.4 through 4.7.1!
 
