@@ -7,7 +7,7 @@ Currently, only GitHub is supported, but other hosts are planned. Supports plugi
 
 ## Objective
 
-Provide a generic solution for plugins hosted on open-source repositories to provide automatic updates through the editor.
+Provide a generic solution for plugins hosted on open-source repositories to offer automatic updates through the editor.
 
 Any updates available will appear under the **Project > Tools > Update Plugins...** menu item.
 
