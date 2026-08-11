@@ -36,7 +36,7 @@ Open the script of the plugin that you want to have automatic updates. This can 
 If you are going to include the Plugin Updater with your plugin, then just add the following code:
 ```gdscript
 func get_plugin_path() -> String:
-	return get_script().resource_path.get_base_dir()
+	return get_script().resource_path.get_base_dir() + "/"
 
 func _enter_tree() -> void:
     PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/{USERNAME}/{REPO_NAME}")
@@ -50,7 +50,7 @@ If you'd rather avoid including the Plugin Updater or making it a dependency, bu
 
 ```gdscript
 func get_plugin_path() -> String:
-	return get_script().resource_path.get_base_dir()
+	return get_script().resource_path.get_base_dir() + "/"
 
 func _enter_tree() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
