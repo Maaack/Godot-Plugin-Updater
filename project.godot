@@ -30,7 +30,7 @@ enabled=PackedStringArray("res://addons/plugin_updater/plugin.cfg")
 [plugin_updater]
 
 plugins={
-"res://addons/plugin_updater": "https://github.com/Maaack/Godot-Plugin-Updater"
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
 }
 
 [rendering]
