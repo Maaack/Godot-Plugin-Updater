@@ -69,6 +69,20 @@ func _remove_from_auto_update_list() -> void:
 	ProjectSettings.save()
 ```
 
+### External Requests
+
+The `api_client.tscn` and `download_and_extract.tscn` nodes make external requests using the built-in `HTTPRequest` class. These requests are made when the plugin is enabled, or when the editor starts, and during an update.
+
+Here is an example of the request to check for updates for *Plugin Updater*:
+```http
+GET https://api.github.com/repos/Maaack/Godot-Plugin-Updater/releases
+Content-Type: application/json
+```
+Here is an example of the request to update to the latest release of *Plugin Updater*:
+```http
+GET https://api.github.com/repos/Maaack/Godot-Plugin-Updater/zipball/v0.5.0
+```
+
 ### Testing
 
 The `check_plugin_version.tscn` and `update_plugin.tscn` can both be tested manually in the inspector, given a plugin directory and repository URL.
