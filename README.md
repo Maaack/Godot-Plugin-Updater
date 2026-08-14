@@ -58,13 +58,15 @@ If you'd rather avoid including the Plugin Updater or making it a dependency, bu
 ```gdscript
 func _add_to_auto_update_list() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
-	plugin_repos[get_plugin_path()] = PLUGIN_REPO_URL
+	plugin_repos[get_plugin_path()] = "https://github.com/{USERNAME}/{REPO_NAME}"
 	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
+	ProjectSettings.save()
 
 func _remove_from_auto_update_list() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
 	plugin_repos.erase(get_plugin_path())
 	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
+	ProjectSettings.save()
 ```
 
 ### Testing
