@@ -15,15 +15,19 @@ Any updates available will appear under the **Project > Tools > Update Plugins..
 
 ## Installation
 
-### GitHub
+*Plugin Updater* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project.
 
+### Existing Project
+While editing a project in *Godot*:
 
-1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-Plugin-Updater/releases/latest).  
-2.  Extract the contents of the archive.
-3.  Move the `addons/plugin_updater` folder into your project's `addons/` folder.  
-4.  Open/Reload the project.  
-5.  Enable the plugin from the **Project > Project Settings > Plugins** tab.  
-
+1.  Go to the **Asset Store** tab.
+2.  Search for "Plugin Updater".
+3.  Click on the result to open the plugin details.
+4.  Click to **Download**.
+5.  Check that contents are getting installed to `addons/` and there are no conflicts.
+6.  Click to **Install**.
+7.  Complete the installation and extraction.
+8.  Enable the plugin from the **Project > Project Settings > Plugins** tab.  
 
 ## Usage
 
