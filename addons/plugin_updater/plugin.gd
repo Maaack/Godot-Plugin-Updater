@@ -30,6 +30,9 @@ static func remove_plugin(plugin_directory:String):
 	plugin_repos.erase(plugin_directory)
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
 
+static func get_enabled_plugins() -> PackedStringArray:
+	return ProjectSettings.get_setting("editor_plugins/enabled", [] as PackedStringArray)
+
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir() + "/"
 

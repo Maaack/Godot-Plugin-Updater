@@ -34,7 +34,7 @@ var plugin_name : String : get = get_plugin_name
 func load_plugin_data() -> bool:
 	if plugin_directory.is_empty():
 		return true
-	for enabled_plugin in PluginUpdater.get_plugin_repos():
+	for enabled_plugin in PluginUpdater.get_enabled_plugins():
 		if enabled_plugin.contains(plugin_directory):
 			var config := ConfigFile.new()
 			var error = config.load(enabled_plugin)
