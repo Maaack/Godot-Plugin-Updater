@@ -43,30 +43,24 @@ If you are going to include the Plugin Updater with your plugin, then just add t
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir() + "/"
 
-func _add_to_auto_update_list() -> void:
+func _enter_tree() -> void:
     PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/{USERNAME}/{REPO_NAME}")
 
-func _remove_from_auto_update_list() -> void:
-	PluginUpdater.remove_plugin(get_plugin_path())
-
-func _enter_tree() -> void:
-	_add_to_auto_update_list()
-
 func _exit_tree() -> void:
-	_remove_from_auto_update_list()
+	PluginUpdater.remove_plugin(get_plugin_path())
 ```
 
 #### Supporting Plugin Updater
 If you'd rather avoid including the Plugin Updater or making it a dependency, but would still like to optionally support it, you can substitute the following code:
 
 ```gdscript
-func _add_to_auto_update_list() -> void:
+func _enter_tree() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
 	plugin_repos[get_plugin_path()] = "https://github.com/{USERNAME}/{REPO_NAME}"
 	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
 	ProjectSettings.save()
 
-func _remove_from_auto_update_list() -> void:
+func _exit_tree() -> void:
 	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
 	plugin_repos.erase(get_plugin_path())
 	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
