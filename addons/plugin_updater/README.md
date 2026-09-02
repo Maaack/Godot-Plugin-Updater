@@ -90,3 +90,18 @@ Open up either scene, select the root note in the Scene Tree, and then in the In
 `check_plugin_version.tscn` will print output to the console.
 
 `update_plugin.tscn` will make a window visible inside the scene with the requested update information.
+
+### Known Issues
+
+GitHub will sometimes not update the releases list with the latest release. In this case, editing and updating the release page usually resolves the problem.
+
+## Supported Plugins
+
+- [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)
+- [Maaack's Menus Template](https://github.com/Maaack/Godot-Menus-Template)
+- [Maaack's Options Menus](https://github.com/Maaack/Godot-Options-Menus)
+- [Maaack's Input Remapping](https://github.com/Maaack/Godot-Input-Remapping)
+- [Maaack's Scene Loader](https://github.com/Maaack/Godot-Scene-Loader)
+- [Maaack's Credits Scene](https://github.com/Maaack/Godot-Credits-Scene) 
+- [Maaack's UI Sound Controller](https://github.com/Maaack/Godot-UI-Sound-Controller)
+- [Maaack's Music Controller](https://github.com/Maaack/Godot-Music-Controller)
