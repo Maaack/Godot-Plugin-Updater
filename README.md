@@ -91,6 +91,10 @@ Open up either scene, select the root note in the Scene Tree, and then in the In
 
 `update_plugin.tscn` will make a window visible inside the scene with the requested update information.
 
+### Known Issues
+
+GitHub will sometimes not update the releases list with the latest release. In this case, editing and updating the release page usually resolves the problem.
+
 ## Supported Plugins
 
 - [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)
